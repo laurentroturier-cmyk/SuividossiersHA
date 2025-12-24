@@ -4,22 +4,22 @@ const outils = [
   {
     name: 'ChatGPT',
     url: 'https://chatgpt.com/',
-    logo: 'https://chatgpt.com/apple-touch-icon.png',
+    logo: '/logos/chatgpt.png',
   },
   {
     name: 'Gemini',
     url: 'https://gemini.google.com/app?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all',
-    logo: 'https://www.gstatic.com/lamda/images/gemini_favicon_v1_32.png',
+    logo: '/logos/gemini.png',
   },
   {
     name: 'Notebook LM',
     url: 'https://notebooklm.google/',
-    logo: 'https://notebooklm.google/favicon.ico',
+    logo: '/logos/notebooklm.png',
   },
   {
     name: 'Perplexity',
     url: 'https://www.perplexity.ai/?login-source=oneTapHome&login-new=false',
-    logo: 'https://www.perplexity.ai/favicon.ico',
+    logo: '/logos/perplexity.png',
   },
 ];
 

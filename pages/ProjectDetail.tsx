@@ -622,6 +622,30 @@ export const ProjectDetail: React.FC<Props> = ({ project, allProjects, onBack, o
                                       <a href={item.att.url} download={item.att.name} className="p-1.5 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-900/20 rounded" title="Télécharger">
                                          <Download size={16} />
                                       </a>
+                                      <button
+                                        onClick={async () => {
+                                          if (window.confirm('Supprimer ce document ?')) {
+                                            try {
+                                              await deleteFile(item.att.path);
+                                              // Mise à jour locale de formData
+                                              setFormData((prev: Project) => {
+                                                // Supprimer dans NO
+                                                let no_attachments = prev.no_attachments?.filter(a => a.path !== item.att.path);
+                                                // Supprimer dans chaque procédure
+                                                let procedures = prev.procedures?.map(proc => ({
+                                                  ...proc,
+                                                  rp_attachments: proc.rp_attachments?.filter(a => a.path !== item.att.path)
+                                                }));
+                                                return { ...prev, no_attachments, procedures };
+                                              });
+                                            } catch (err) {
+                                              alert('Erreur lors de la suppression : ' + (err as Error).message);
+                                            }
+                                          }
+                                        }}
+                                        className="p-1.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded" title="Supprimer">
+                                        <Trash2 size={16} />
+                                      </button>
                                    </div>
                                 </td>
                              </tr>
